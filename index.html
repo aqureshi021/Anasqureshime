@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name - Professional Portfolio</title>
+    <title>Anas Qureshi - Portfolio</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react/17.0.2/umd/react.production.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/17.0.2/umd/react-dom.production.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
@@ -31,7 +31,70 @@
             color: var(--text-color);
             background-color: var(--bg-color);
         }
-        
+
+        /* Add viewport settings */
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+/* Responsive Styles */
+@media only screen and (max-width: 768px) {
+    /* Navbar adjustments for smaller screens */
+    .navbar .container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .navbar ul {
+        flex-direction: column;
+        width: 100%;
+        align-items: flex-start;
+    }
+
+    .navbar a {
+        width: 100%;
+        text-align: left;
+        padding: 1rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* Hero section text size adjustments */
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero p {
+        font-size: 1.2rem;
+    }
+
+    /* Tabs and Projects section adjustments */
+    .tabs {
+        flex-direction: column;
+        margin-bottom: 1rem;
+    }
+
+    .tab-button {
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+
+    .skills ul {
+        flex-direction: column;
+    }
+
+    .skills li {
+        margin-bottom: 1rem;
+    }
+
+    /* Footer padding adjustments */
+    .footer {
+        font-size: 0.8rem;
+        padding: 1rem 0;
+    }
+
+    /* General section padding adjustments */
+    section {
+        padding: 2rem 0;
+    }
+}
         .container {
             max-width: 1200px;
             margin: 0 auto;
