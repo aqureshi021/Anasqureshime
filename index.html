@@ -3,416 +3,318 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anas Qureshi - Portfolio</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/17.0.2/umd/react.production.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/17.0.2/umd/react-dom.production.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.26.0/babel.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Anas Qureshi - Resume</title>
     <style>
         :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #3498db;
-            --accent-color: #e74c3c;
-            --text-color: #333;
-            --bg-color: #ecf0f1;
-            --section-bg: #fff;
+            --background-color: #f0f4f8;
+            --text-color: #1a365d;
+            --accent-color: #3498db;
+            --card-background: #ffffff;
+            --navbar-background: #4a90e2;
         }
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
         body {
-            font-family: 'Poppins', sans-serif;
-            line-height: 1.6;
+            font-family: Arial, sans-serif;
+            background-color: var(--background-color);
             color: var(--text-color);
-            background-color: var(--bg-color);
+            line-height: 1.6;
         }
 
-        
-
-/* Responsive Styles */
-@media only screen and (max-width: 768px) {
-    /* Navbar adjustments for smaller screens */
-    .navbar .container {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .navbar ul {
-        flex-direction: column;
-        width: 100%;
-        align-items: flex-start;
-    }
-
-    .navbar a {
-        width: 100%;
-        text-align: left;
-        padding: 1rem;
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    /* Hero section text size adjustments */
-    .hero h1 {
-        font-size: 2.5rem;
-    }
-
-    .hero p {
-        font-size: 1.2rem;
-    }
-
-    /* Tabs and Projects section adjustments */
-    .tabs {
-        flex-direction: column;
-        margin-bottom: 1rem;
-    }
-
-    .tab-button {
-        width: 100%;
-        margin-bottom: 1rem;
-    }
-
-    .skills ul {
-        flex-direction: column;
-    }
-
-    .skills li {
-        margin-bottom: 1rem;
-    }
-
-    /* Footer padding adjustments */
-    .footer {
-        font-size: 0.8rem;
-        padding: 1rem 0;
-    }
-
-    /* General section padding adjustments */
-    section {
-        padding: 2rem 0;
-    }
-}
         .container {
-            max-width: 1200px;
+            width: 90%;
+            max-width: 1100px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 20px;
         }
-        
-        /* Navbar */
+
+        /* Navbar Styles */
         .navbar {
-            background-color: var(--primary-color);
-            color: #fff;
-            padding: 1rem 0;
             position: fixed;
             top: 0;
             left: 0;
-            right: 0;
+            width: 100%;
+            background-color: var(--navbar-background);
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
-        
-        .navbar .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .navbar-brand {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #fff;
-            text-decoration: none;
-        }
-        
-        .navbar ul {
-            display: flex;
-            list-style: none;
-        }
-        
-        .navbar a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: 400;
-            padding: 0.5rem 1rem;
-            transition: color 0.3s;
-        }
-        
-        .navbar a:hover {
-            color: var(--secondary-color);
-        }
-        
-        /* Hero Section */
-        .hero {
-            height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-            color: #fff;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero::before {
-            content: '';
+
+        .navbar-content {
+            display: none;
+            flex-direction: column;
+            background-color: var(--navbar-background);
             position: absolute;
-            top: 0;
+            top: 100%;
             left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('https://source.unsplash.com/random/1600x900') center center/cover no-repeat;
-            opacity: 0.1;
+            width: 100%;
+            padding: 10px;
         }
-        
-        .hero-content {
-            position: relative;
-            z-index: 1;
-        }
-        
-        .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            letter-spacing: 1px;
-        }
-        
-        .hero p {
-            font-size: 1.5rem;
-            font-weight: 300;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-        
-        /* Sections */
-        section {
-            padding: 5rem 0;
-            background-color: var(--section-bg);
-        }
-        
-        section:nth-child(even) {
-            background-color: var(--bg-color);
-        }
-        
-        .section-title {
+
+        .navbar-content a {
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            display: block;
             text-align: center;
-            margin-bottom: 3rem;
-            font-size: 2.5rem;
-            font-weight: 600;
-            color: var(--primary-color);
+            transition: background-color 0.3s ease;
         }
-        
-        /* Projects Section */
-        .tabs {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 2rem;
+
+        .navbar-content a:hover {
+            background-color: rgba(255,255,255,0.2);
         }
-        
-        .tab-button {
-            background-color: transparent;
-            color: var(--primary-color);
-            border: none;
-            padding: 0.5rem 1rem;
-            margin: 0 0.5rem;
+
+        .hamburger {
+            display: block;
             cursor: pointer;
-            transition: all 0.3s;
-            font-size: 1rem;
-            font-weight: 600;
-            border-bottom: 2px solid transparent;
+            padding: 15px;
         }
-        
-        .tab-button:hover, .tab-button.active {
-            color: var(--secondary-color);
-            border-bottom: 2px solid var(--secondary-color);
+
+        .bar {
+            width: 25px;
+            height: 3px;
+            background-color: white;
+            margin: 5px 0;
+            transition: 0.4s;
         }
-        
-        .tab-content {
+
+        .navbar-content.active {
+            display: flex;
+        }
+
+        /* Content Sections */
+        .section {
+            background-color: var(--card-background);
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            opacity: 0;
+            animation: fadeInUp 0.8s forwards;
+            animation-delay: 0.2s;
+        }
+
+        .job, .education-item {
+            opacity: 0;
+            animation: slideInLeft 0.8s forwards;
+            margin-bottom: 15px;
+            padding: 10px;
+            border-left: 4px solid var(--accent-color);
+            transition: all 0.3s ease;
+        }
+
+        .job:hover, .education-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .section-title {
+            color: var(--accent-color);
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 10px;
+        }
+
+        h1 {
+            color: var(--accent-color);
             text-align: center;
-            max-width: 800px;
-            margin: 0 auto;
+            opacity: 0;
+            animation: fadeInUp 0.8s forwards;
         }
-        
-        /* Skills Section */
-        .skills ul {
+
+        .skills-list {
             display: flex;
             flex-wrap: wrap;
-            justify-content: center;
-            list-style: none;
-            max-width: 800px;
-            margin: 0 auto;
+            gap: 10px;
         }
-        
-        .skills li {
-            background-color: var(--secondary-color);
-            color: #fff;
-            padding: 0.5rem 1rem;
-            margin: 0.5rem;
-            border-radius: 25px;
-            font-size: 0.9rem;
-            transition: all 0.3s;
+
+        .skill-tag {
+            background-color: var(--accent-color);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            opacity: 0;
+            animation: fadeInUp 0.6s forwards;
+            animation-delay: calc(0.1s * var(--index));
         }
-        
-        .skills li:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+
+        /* Animation for jobs and education */
+        .job, .education-item {
+            animation-delay: calc(0.2s * var(--index));
         }
-        
-        /* Contact Section */
-        .contact {
-            text-align: center;
+
+        /* Responsive Adjustments */
+        @media (min-width: 768px) {
+            .navbar-content {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                position: static;
+                background-color: transparent;
+            }
+
+            .navbar-content a {
+                margin: 0 15px;
+            }
+
+            .hamburger {
+                display: none;
+            }
         }
-        
-        .contact p {
-            margin-bottom: 1rem;
-        }
-        
-        .social-links {
-            display: flex;
-            justify-content: center;
-            margin-top: 2rem;
-        }
-        
-        .social-links a {
-            color: var(--primary-color);
-            font-size: 1.5rem;
-            margin: 0 1rem;
-            transition: color 0.3s;
-        }
-        
-        .social-links a:hover {
-            color: var(--secondary-color);
-        }
-        
-        /* Footer */
-        .footer {
-            background-color: var(--primary-color);
-            color: #fff;
-            text-align: center;
-            padding: 1.5rem 0;
-            font-size: 0.9rem;
-        }
-        
-        /* Animations */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        
-        .fade-in {
-            animation: fadeIn 1s ease-out;
+
+        /* Certification List Animation */
+        #certifications ul li {
+            opacity: 0;
+            animation: slideInLeft 0.8s forwards;
+            animation-delay: calc(0.1s * var(--index));
         }
     </style>
 </head>
 <body>
-    <div id="root"></div>
-    
-    <script type="text/babel">
-        const App = () => {
-            const [activeTab, setActiveTab] = React.useState('excel');
+    <nav class="navbar">
+        <div class="hamburger" onclick="toggleMenu()">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        <div class="navbar-content">
+            <a href="#summary">Summary</a>
+            <a href="#experience">Experience</a>
+            <a href="#education">Education</a>
+            <a href="#skills">Skills</a>
+            <a href="#certifications">Certifications</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header class="resume-header">
+            <h1>Anas Qureshi</h1>
+            <p style="text-align: center;">Studying BBIT | Google's Certified in Data Analytics | MS Excel, PowerBI, SQL, Python</p>
+        </header>
+
+        <section id="summary" class="section">
+            <h2 class="section-title">Summary</h2>
+            <p>I'm a 3rd-year Bachelor of Business and Information Technology (BBIT) student with a strong interest in technology, problem-solving, and data-driven decision-making. My journey has been diverse, including a role as Warehouse Incharge at K.K Enterprises, where I managed inventory, optimized operations, and developed problem-solving and organizational skills. I've also freelanced as a WordPress developer and graphic designer, delivering creative solutions to clients and enhancing my technical and design expertise. Currently, I'm building my skills in data analytics with tools like Python, Power BI, R, SQL, and Excel, striving to uncover meaningful insights as an aspiring data scientist.</p>
+        </section>
+
+        <section id="experience" class="section">
+            <h2 class="section-title">Experience</h2>
+            <div class="job" style="--index: 1;">
+                <h3>Freelance WordPress Developer</h3>
+                <p>May 2024 - Present (7 months)</p>
+                <p>Developing and Managing WordPress Websites for various freelance clients.</p>
+            </div>
+            <div class="job" style="--index: 2;">
+                <h3>Warehouse Incharge - K.K Enterprises</h3>
+                <p>May 2023 - April 2024 (1 year)</p>
+                <p>Managed inventory and optimized warehouse operations in Karāchi, Sindh, Pakistan.</p>
+            </div>
+            <div class="job" style="--index: 3;">
+                <h3>Graphic/Visual Identity Designer</h3>
+                <p>September 2020 - April 2023 (2 years 8 months)</p>
+                <p>Created impactful brand visuals, designed logos, typography, and visual elements ensuring brand consistency across digital and print platforms.</p>
+            </div>
+            <div class="job" style="--index: 4;">
+                <h3>Social Media Manager</h3>
+                <p>February 2018 - August 2020 (2 years 7 months)</p>
+                <p>Managed Facebook Pages and planned content for various local businesses, technology blogs, sports, and personal pages.</p>
+            </div>
+        </section>
+
+        <section id="education" class="section">
+            <h2 class="section-title">Education</h2>
+            <div class="education-item" style="--index: 1;">
+                <h3>Virtual University of Pakistan</h3>
+                <p>Bachelor of Business & Information Technology (BBIT)</p>
+                <p>March 2022 - February 2026</p>
+            </div>
+            <div class="education-item" style="--index: 2;">
+                <h3>Govt. National College of Science</h3>
+                <p>Higher Secondary Education, Computer Science</p>
+            </div>
+        </section>
+
+        <section id="skills" class="section">
+            <h2 class="section-title">Skills</h2>
+            <div class="skills-list">
+                <span class="skill-tag" style="--index: 1;">Microsoft Power BI</span>
+                <span class="skill-tag" style="--index: 2;">Data Analysis</span>
+                <span class="skill-tag" style="--index: 3;">R (Programming Language)</span>
+                <span class="skill-tag" style="--index: 4;">Python</span>
+                <span class="skill-tag" style="--index: 5;">SQL</span>
+                <span class="skill-tag" style="--index: 6;">WordPress</span>
+                <span class="skill-tag" style="--index: 7;">Graphic Design</span>
+            </div>
+        </section>
+
+        <section id="certifications" class="section">
+            <h2 class="section-title">Certifications</h2>
+            <ul>
+                <li style="--index: 1;">Google Data Analytics - Google</li>
+                <li style="--index: 2;">Data Analysis with Excel Power Tools - Datacamp</li>
+                <li style="--index: 3;">Excel Fundamentals - Datacamp</li>
+                <li style="--index: 4;">PowerBI Essentials Training - NASBA</li>
+                <li style="--index: 5;">Python Essentials 1</li>
+                <li style="--index: 6;">Power BI Essential Training</li>
+                <li style="--index: 7;">Graphic Design | Specialization</li>
+                <li style="--index: 8;">Programming with R</li>
+                <li style="--index: 9;">Advance Your Skills in Graphic Design</li>
+            </ul>
+        </section>
+
+        <section id="contact" class="section">
+            <h2 class="section-title">Contact</h2>
+            <p>Email: theaqureshi@gmail.com</p>
+            <p>LinkedIn: <a href="https://www.linkedin.com/in/anasqureshime" target="_blank" style="color: var(--accent-color);">linkedin.com/in/anasqureshime</a></p>
+        </section>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            const navbarContent = document.querySelector('.navbar-content');
+            navbarContent.classList.toggle('active');
+        }
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const navbar = document.querySelector('.navbar');
+            const navbarContent = document.querySelector('.navbar-content');
             
-            const Navbar = () => (
-                <nav className="navbar">
-                    <div className="container">
-                        <a href="#home" className="navbar-brand">Anas Qureshi</a>
-                        <ul>
-                            <li><a href="#home">Home</a></li>
-                            <li><a href="#projects">Portfolio</a></li>
-                            <li><a href="#skills">Skills</a></li>
-                            <li><a href="#contact">Contact</a></li>
-                        </ul>
-                    </div>
-                </nav>
-            );
-            
-            const Hero = () => (
-                <section id="home" className="hero">
-                    <div className="hero-content fade-in">
-                        <h1>Anas Qureshi</h1>
-                        <p>Wordpress Developer & Aspiring Data Analyst</p>
-                    </div>
-                </section>
-            );
-            
-            const Projects = () => (
-                <section id="projects">
-                    <div className="container fade-in">
-                        <h2 className="section-title">My Portfolio</h2>
-                        <div className="tabs">
-                            <button className={`tab-button ${activeTab === 'excel' ? 'active' : ''}`} onClick={() => setActiveTab('excel')}>Excel Dashboard</button>
-                            <button className={`tab-button ${activeTab === 'python' ? 'active' : ''}`} onClick={() => setActiveTab('python')}>Python Projects</button>
-                            <button className={`tab-button ${activeTab === 'other' ? 'active' : ''}`} onClick={() => setActiveTab('other')}>Other Projects</button>
-                        </div>
-                        <div className="tab-content">
-                            {activeTab === 'excel' && <p>Coming Soon!</p>}
-                            {activeTab === 'python' && <p>Coming Soon!</p>}
-                            {activeTab === 'other' && <p>Coming Soon!</p>}
-                        </div>
-                    </div>
-                </section>
-            );
-            
-            const Skills = () => (
-                <section id="skills" className="skills">
-                    <div className="container fade-in">
-                        <h2 className="section-title">My Skills</h2>
-                        <ul>
-                            <li>Excel</li>
-                            <li>Python</li>
-                            <li>SQL</li>
-                            <li>PowerBI</li>
-                            <li>Tableau</li>
-                            <li>HTML5</li>
-                            <li>CSS3</li>
-                            <li>JavaScript</li>
-                            <li>JQuery</li>
-                            <li>PHP</li>
-                            <li>WordPress</li>
-                            <li>Data Analysis</li>
-                            <li>Data Visualization</li>
-                            <li>Statistical Analysis</li>
-                        </ul>
-                    </div>
-                </section>
-            );
-            
-            const Contact = () => (
-                <section id="contact" className="contact">
-                    <div className="container fade-in">
-                        <h2 className="section-title">Get In Touch</h2>
-                        <p>I'm always open to new opportunities and collaborations.</p>
-                        <p>Email: theaqureshi@gmail.com</p>
-                        <div className="social-links">
-                            <a href="https://github.com/aqureshi021" target="_blank" aria-label="GitHub"><i className="fab fa-github"></i></a>
-                            <a href="https://www.linkedin.com/in/anasqureshime/" target="_blank" aria-label="Twitter"><i className="fab fa-twitter"></i></a>
-                        </div>
-                    </div>
-                </section>
-            );
-            
-            const Footer = () => (
-                <footer className="footer">
-                    <div className="container">
-                        <p>&copy; {new Date().getFullYear()} Anas Qureshi. All rights reserved.</p>
-                    </div>
-                </footer>
-            );
-            
-            return (
-                <React.Fragment>
-                    <Navbar />
-                    <Hero />
-                    <Projects />
-                    <Skills />
-                    <Contact />
-                    <Footer />
-                </React.Fragment>
-            );
-        };
-        
-        ReactDOM.render(<App />, document.getElementById('root'));
+            if (!navbar.contains(event.target) && navbarContent.classList.contains('active')) {
+                navbarContent.classList.remove('active');
+            }
+        });
+
+        // Add top padding to body to account for fixed navbar
+        document.body.style.paddingTop = document.querySelector('.navbar').offsetHeight + 'px';
     </script>
 </body>
 </html>
